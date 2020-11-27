@@ -43,7 +43,7 @@
 #### 하르 분류기 Haar-Classifier
 
 영상 처리를 위한 파이썬 라이브러리인 [OpenCV](https://opencv.org/) 에서는 특징점 검출을 통한 분류기가 있습니다. 그 중 Haar Classifier 은 특정 형태의 물체를 찾고자 할 때 사용할 수 있는 대표적인 방법 중 하나입니다. 이는 특징(feature)을 기반으로 오브젝트를 검출하고, 특징은 직사각형 영역으로 구성되어 있기 때문에 픽셀을 직접 사용할 때보다 동작 속도가 빠릅니다. 
-하르 분류기는 다음과 같이 사용할 수 있습니다. 
+하르 분류기는 다음과 같이 사용할 수 있습니다. (깃헙 내 폴더 files 에 xml 파일을 첨부해 놓았습니다.)
 
 ```python
 img = cv2.imread('face.jpeg')
@@ -56,8 +56,35 @@ plt.imshow(final_img)
 ```
 ![2](https://user-images.githubusercontent.com/52185595/100444846-7e58d500-30ef-11eb-8b80-3423f333cbdd.png)
 
+특징은 Edge, Line, Four-rectangle 세 가지로 분류할 수 있습니다. 이때 얼굴 검출을 하는데 의미있는 특징을 골라내서 오브젝트를 인식합니다. 
+
+<img width="300" alt="md_27" src="https://user-images.githubusercontent.com/52185595/100446236-c842ba80-30f1-11eb-9fff-bd3000faa114.png">
+
+하르 분류기를 사용하면 얼굴 뿐 아니라 눈, 입, 코 등도 검출할 수 있습니다. 때문에 
+
+*얼굴이 보이는데 코가 안 보인다 -> 마스크를 썼다* 
+
+라는 [코드](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/files/Haar-Classifier.py)를 작성했습니다. 
+
+<img width="300" alt="md_27" src="https://user-images.githubusercontent.com/52185595/100448706-0fcb4580-30f6-11eb-8248-6d56c427be67.jpg">
+
+위와 같이 밝고 선명한 이미지에서는 잘 작동하는 것을 볼 수 있습니다. 하지만 라즈베리파이 Video Streaming 에서는 전혀 작동하지 않았습니다. 
+
+#### Real Time Face Mask Detection with Opencv, Keras and Deep Learning
 
 
+
+
+
+
+*Haar - Classifier 참조*
+***
+
+<https://darkpgmr.tistory.com/70>
+
+<https://webnautes.tistory.com/1352>
+
+<https://m.blog.naver.com/zeta0807/221304976623>
 
 
 ## 로봇 팔 
