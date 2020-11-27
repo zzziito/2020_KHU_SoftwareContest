@@ -30,6 +30,8 @@
 + **Picam** : 촬영해서 라즈베리파이로 보내기 
 + **Robot Arm** : 마스크 집기 
 
+라즈베리파이 Python 코딩을 위한 기본 세팅은 [여기](https://opencv.org/)
+
 #### Software
 
 + **PYTHON** with Opencv 
@@ -70,7 +72,27 @@ plt.imshow(final_img)
 
 위와 같이 밝고 선명한 이미지에서는 잘 작동하는 것을 볼 수 있습니다. 하지만 라즈베리파이 Video Streaming 에서는 전혀 작동하지 않았습니다. 
 
+![1](https://user-images.githubusercontent.com/52185595/100450260-abf64c00-30f8-11eb-8b88-e9ee720253a6.gif)
+
+![5](https://user-images.githubusercontent.com/52185595/100453635-a26fe280-30fe-11eb-99e7-86f6381eda1c.jpg)
+
+
+
+[라즈베리파이 카메라 라이브 스트리밍 코드](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/files/videoStreaming.py)
+
+[하르 분류기를 이용한 Real Time Face Detection 코드](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/files/videoStreaming_HaarClassifier.py)
+
+
+
 #### Real Time Face Mask Detection with Opencv, Keras and Deep Learning
+
+그래서 [이곳](https://github.com/chandrikadeb7/Face-Mask-Detection) 을 참고해 딥러닝을 이용해 마스크를 판별했습니다. 
+
+[코드](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/files/DeepLearning_Streaming.py)
+
+
+
+
 
 
 
