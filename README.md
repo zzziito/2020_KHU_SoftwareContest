@@ -42,7 +42,20 @@
 
 #### 하르 분류기 Haar-Classifier
 
-영상 처리를 위한 파이썬 라이브러리인 [OpenCV](https://opencv.org/) 에서는 특징점 검출을 통한 분류기가 있습니다. 그 중 Haar Classifier 은  
+영상 처리를 위한 파이썬 라이브러리인 [OpenCV](https://opencv.org/) 에서는 특징점 검출을 통한 분류기가 있습니다. 그 중 Haar Classifier 은 특정 형태의 물체를 찾고자 할 때 사용할 수 있는 대표적인 방법 중 하나입니다. 이는 특징(feature)을 기반으로 오브젝트를 검출하고, 특징은 직사각형 영역으로 구성되어 있기 때문에 픽셀을 직접 사용할 때보다 동작 속도가 빠릅니다. 
+하르 분류기는 다음과 같이 사용할 수 있습니다. 
+
+```python
+img = cv2.imread('face.jpeg')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontface.xml')
+gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+faces = face_cascade.detectMultiScale(gray,1.3,5)
+for (x,y,w,h) in faces:
+    final_img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+plt.imshow(final_img)
+```
+![2](https://user-images.githubusercontent.com/52185595/100444846-7e58d500-30ef-11eb-8b80-3423f333cbdd.png)
+
 
 
 
