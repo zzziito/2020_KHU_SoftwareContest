@@ -60,7 +60,7 @@ plt.imshow(final_img)
 
 특징은 Edge, Line, Four-rectangle 세 가지로 분류할 수 있습니다. 이때 얼굴 검출을 하는데 의미있는 특징을 골라내서 오브젝트를 인식합니다. 
 
-<img width="300" alt="md_27" src="https://user-images.githubusercontent.com/52185595/100446236-c842ba80-30f1-11eb-9fff-bd3000faa114.png">
+<img width="400" alt="md_27" src="https://user-images.githubusercontent.com/52185595/100446236-c842ba80-30f1-11eb-9fff-bd3000faa114.png">
 
 하르 분류기를 사용하면 얼굴 뿐 아니라 눈, 입, 코 등도 검출할 수 있습니다. 때문에 
 
@@ -68,7 +68,7 @@ plt.imshow(final_img)
 
 라는 [코드](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/files/Haar-Classifier.py)를 작성했습니다. 
 
-<img width="300" alt="md_27" src="https://user-images.githubusercontent.com/52185595/100448706-0fcb4580-30f6-11eb-8248-6d56c427be67.jpg">
+<img width="400" alt="md_27" src="https://user-images.githubusercontent.com/52185595/100448706-0fcb4580-30f6-11eb-8248-6d56c427be67.jpg">
 
 위와 같이 밝고 선명한 이미지에서는 잘 작동하는 것을 볼 수 있습니다. 하지만 라즈베리파이 Video Streaming 에서는 전혀 작동하지 않았습니다. 
 
@@ -84,21 +84,6 @@ plt.imshow(final_img)
 
 
 
-#### Real Time Face Mask Detection with Opencv, Keras and Deep Learning
-
-그래서 [이곳](https://github.com/chandrikadeb7/Face-Mask-Detection) 을 참고해 딥러닝을 이용해 마스크를 판별했습니다. 
-
-[코드](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/files/DeepLearning_Streaming.py)
-
-
-
-
-
-
-
-
-
-
 *Haar - Classifier 참조*
 ***
 
@@ -108,6 +93,23 @@ plt.imshow(final_img)
 
 <https://m.blog.naver.com/zeta0807/221304976623>
 
+
+
+#### Real Time Face Mask Detection with Opencv, Keras and Deep Learning
+
+그래서 [이곳](https://github.com/chandrikadeb7/Face-Mask-Detection) 을 참고해 딥러닝을 이용해 마스크를 판별했습니다. 
+
+[코드](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/files/DeepLearning_Streaming.py)
+
+![6](https://user-images.githubusercontent.com/52185595/100456142-39d73480-3103-11eb-94d4-b530b3485aab.jpg)
+
+![3](https://user-images.githubusercontent.com/52185595/100455599-4a3adf80-3102-11eb-81ae-85244d4a6138.gif)
+
+위와 같이 어느 상황에서도 얼굴을 잘 인식하며, 대략 2m 떨어진 곳까지 인식이 가능했습니다. 
+
+<img width="400" alt="md_27" src="https://user-images.githubusercontent.com/52185595/100456852-5a53be80-3104-11eb-99ec-00e25c13ee23.jpg">
+
+위와 같이 화면을 세 개의 section 으로 나누어서 얼굴이 어느 section에 위치하느냐에 따라 모터를 작동시키는 알고리즘으로 사람을 추적합니다. 
 
 ## 로봇 팔 
 
