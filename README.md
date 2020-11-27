@@ -94,6 +94,13 @@ plt.imshow(final_img)
 <https://m.blog.naver.com/zeta0807/221304976623>
 
 
++ 제공해주신 카메라를 쓰지 않은 이유는, PiCam 에 비해 스트리밍 속도가 너무 느리기 때문이었습니다. 
+
+![4](https://user-images.githubusercontent.com/52185595/100461328-01882400-310c-11eb-9eb0-45b3ad60d524.gif)
+
+위 영상을 보면, PiCam 은 스트리밍할 때 딜레이가 거의 없지만, Usb 연결을 하는 웹캠은 1초정도 딜레이가 발생합니다. 1초나 딜레이가 발생하면 주행이 거의 불가능하다고 판단했습니다. 
+
+
 
 #### Real Time Face Mask Detection with Opencv, Keras and Deep Learning
 
@@ -110,6 +117,39 @@ plt.imshow(final_img)
 <img width="400" alt="md_27" src="https://user-images.githubusercontent.com/52185595/100456852-5a53be80-3104-11eb-99ec-00e25c13ee23.jpg">
 
 위와 같이 화면을 세 개의 section 으로 나누어서 얼굴이 어느 section에 위치하느냐에 따라 모터를 작동시키는 알고리즘으로 사람을 추적합니다. 
+
+### 모터 동작
+
+주최 측에서 제공해주신 물품은 라즈베리파이와 [STM32F407G-DISC1](https://www.st.com/en/evaluation-tools/stm32f4discovery.html) 이지만, 여러 개의 GPIO 핀을 사용할 수 있게 해 주는 모듈 
+pca9685 를 발견하고 , 굳이 STM 보드를 사용할 필요가 없다고 느껴 사용하지 않았습니다. 
+
+[pca9685 를 사용하지 않고 코딩하기 ! - 모터를 쪼금만 사용할 때](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%20%EB%AA%A8%ED%84%B0%20%EC%BB%A8%ED%8A%B8%EB%A1%A4.md)
+
+
+<img width="300" alt="8" src="https://user-images.githubusercontent.com/52185595/100461788-99860d80-310c-11eb-887f-dfda450376c2.png">
+
+
+[pca9685 데이터시트](https://cdn-learn.adafruit.com/downloads/pdf/adafruit-16-channel-servo-driver-with-raspberry-pi.pdf)
+
+다음과 같이 연결해줍니다. 
+
+<img width="400" alt="md_27" src="https://user-images.githubusercontent.com/52185595/100461981-e5d14d80-310c-11eb-8176-31006d446c9f.png">
+
+불러와야 하는 모듈, duty cycle, PWM 에 관한 사전 설정 및 주행 명령을 담은 클래스인 drivingclass 만들고 불러옵니다. 
+
+[drive_class](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/drive_class.py
+
+```python
+from drive_class import drivingclass
+car = drivingclass()
+car.goForward(1)
+```
+다음과 같이 사용이 가능합니다. 
+
+![5](https://user-images.githubusercontent.com/52185595/100463351-0b5f5680-310f-11eb-8998-90b8017b433a.gif)
+
+
+
 
 ## 로봇 팔 
 
