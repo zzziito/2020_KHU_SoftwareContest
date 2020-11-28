@@ -135,9 +135,9 @@ pca9685 를 발견하고 , 굳이 STM 보드를 사용할 필요가 없다고 �
 
 <img width="400" alt="md_27" src="https://user-images.githubusercontent.com/52185595/100461981-e5d14d80-310c-11eb-8176-31006d446c9f.png">
 
-불러와야 하는 모듈, duty cycle, PWM 에 관한 사전 설정 및 주행 명령을 담은 클래스인 drivingclass 만들고 불러옵니다. 
+불러와야 하는 모듈, duty cycle, PWM 에 관한 사전 설정 및 주행 명령을 담은 클래스인 drivingclass 를 만들고 불러옵니다. 
 
-[drive_class](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/drive_class.py
+[drive_class](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/drive_class.py)
 
 ```python
 from drive_class import drivingclass
@@ -147,6 +147,18 @@ car.goForward(1)
 다음과 같이 사용이 가능합니다. 
 
 ![5](https://user-images.githubusercontent.com/52185595/100463351-0b5f5680-310f-11eb-8998-90b8017b433a.gif)
+
+### 라이다
+
+<img width="250" alt="9" src="https://user-images.githubusercontent.com/52185595/100490452-d8dd4a00-315e-11eb-817c-9d5ccac5023a.png">
+
+[YDLidar X4](https://www.ydlidar.com/products/view/5.html)
+
+[이 사이트](https://pypi.org/project/PyLidar3/) 를 참고하여 PyLidar3 패키지를 이용했습니다. ([라이다 세팅 및 오류 해결 방법은 여기](https://pypi.org/project/PyLidar3/)) 
+깃허브의 /Examples/LidarTest.py 를 실행하면 다음과 같은 generator 가 출력됩니다. 
+
+![12](https://user-images.githubusercontent.com/52185595/100490941-3378a500-3163-11eb-8410-f10e7ec25926.png)
+
 
 
 
