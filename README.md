@@ -187,6 +187,22 @@ print(data[angle])
 
 [주행코드에서 참조하고 있는 클래스](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/drive_class.py)
 
+## 주행 영상
+
+< 라이다가 앞 장애물을 감지하고 goRight 한 후 다시 정상 주행함 > 
+
+![Lidar_2](https://user-images.githubusercontent.com/52185595/100543126-b0a23800-3291-11eb-9786-bab30a185922.gif)
+
+< Face Detection 결과값을 바탕으로 따라가는 주행 > 
+
+[Face Detection Driving](https://www.youtube.com/watch?v=kkWNYCQNuTM&feature=youtu.be&ab_channel=ParkJiwon)
+
+< 마스크 인식 추적과 실시간 스트리밍 영상 > 
+
+<img width="800" alt="20" src="https://user-images.githubusercontent.com/52185595/100543227-3a520580-3292-11eb-8f36-69bf47c4c047.png">
+
+[Mask Detection Driving](https://www.youtube.com/watch?v=hvRNetTKDE4&t=3s&ab_channel=ParkJiwon)
+
 
 ## 로봇 팔 
 
