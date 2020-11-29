@@ -206,6 +206,27 @@ print(data[angle])
 
 ## 로봇 팔 
 
+로봇팔에는 ... 사연이 있습니다. 
+
+<img width="400" alt="21" src="https://user-images.githubusercontent.com/52185595/100544490-5d33e800-3299-11eb-927b-d978483b2fdc.png">
+
+뚝딱뚝딱 조립하고... 로봇팔 모터도 돌렸는데... 실수로 과전압을 흘려버려서... 모터가 모두 고장이 난 것입니다...
+
+<img width="300" alt="22" src="https://user-images.githubusercontent.com/52185595/100544746-2363e100-329b-11eb-965d-7b2a10b94500.png">
+
+(까맣게 타버린 모듈과 모터들...) 
+
+아쉽습니다.
+
+![7](https://user-images.githubusercontent.com/52185595/100544845-e9dfa580-329b-11eb-86a0-a9e1bfe5a4d3.gif)
+
+하지만 갖고있는 다른 모터로 돌렸을 때 정상적으로 작동하는 것을 보아, pca9685 모듈과 라즈베리파이로 충분히 로봇팔을 제작할 수 있을것이라고 생각합니다. 
+
+![23](https://user-images.githubusercontent.com/52185595/100544830-cae11380-329b-11eb-936a-e8b1379e42ce.png)
+
+[스텝다운 감압기](http://scipia.com/product/c46-%EA%B3%A0%EC%B6%9C%EB%A0%A5-5a-%EC%8A%A4%ED%85%9D%EB%8B%A4%EC%9A%B4-%EA%B0%90%EC%95%95-%EC%A0%95%EC%A0%84%EC%95%95-dc%EC%BB%A8%EB%B2%84%ED%84%B0-%EB%AA%A8%EB%93%88/244/category/88/display/1/)를 진작 사용할 것을...
+
+
 
 
 
