@@ -210,7 +210,7 @@ print(data[angle])
 
 <img width="400" alt="21" src="https://user-images.githubusercontent.com/52185595/100544490-5d33e800-3299-11eb-927b-d978483b2fdc.png">
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/52185595/100544574-1e526200-329a-11eb-90b6-1b7a8ea50faf.gif)
+<img width="200" alt="23" src="https://user-images.githubusercontent.com/52185595/100544574-1e526200-329a-11eb-90b6-1b7a8ea50faf.gif">
 
 뚝딱뚝딱 조립하고... 로봇팔 모터도 돌렸는데... 실수로 과전압을 흘려버려서... 모터가 모두 고장이 난 것입니다...
 
