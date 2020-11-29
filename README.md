@@ -30,7 +30,7 @@
 + **Picam** : 촬영해서 라즈베리파이로 보내기 
 + **Robot Arm** : 마스크 집기 
 
-라즈베리파이 Python 코딩을 위한 기본 세팅은 [여기](https://opencv.org/)
+라즈베리파이 Python 코딩을 위한 기본 세팅은 [여기](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%20%EC%BD%94%EB%94%A9%20Setup.md)
 
 #### Software
 
@@ -159,8 +159,33 @@ car.goForward(1)
 
 ![12](https://user-images.githubusercontent.com/52185595/100490941-3378a500-3163-11eb-8410-f10e7ec25926.png)
 
+generator 데이터에는 다음과 같이 접근이 가능합니다.  
 
+```python
+data = next(gen)
+angle = 1
+print(data[angle])
+```
 
+이를 바탕으로 최종 주행 코드를 작성했습니다. 
+
+## 자동차 완성 
+
+### 1단 
+***
+![18](https://user-images.githubusercontent.com/52185595/100542171-ec3a0380-328b-11eb-8b9b-8a9274b9a6e5.png)
+
+### 2단 
+***
+![19](https://user-images.githubusercontent.com/52185595/100542174-ee9c5d80-328b-11eb-9c64-4913689039a7.png)
+
+로봇 팔이 올라갈 자리가 마땅치 않아서 추가적으로 구멍을 뚫어야 했습니다. 
+
+## 최종 코드 
+
+[최종코드](https://github.com/zzziito/2020_KHU_SoftwareContest/edit/main/final_drive_1.py)
+
+[주행코드에서 참조하고 있는 클래스](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/drive_class.py)
 
 
 ## 로봇 팔 
