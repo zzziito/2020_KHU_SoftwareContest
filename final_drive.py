@@ -32,6 +32,10 @@ import PyLidar3
 port = "/dev/ttyUSB0"
 Obj = PyLidar3.YdLidarX4(port)
 
+# 안내방송 플레이어 
+
+import pygame
+
 # 주행용 기본세팅
 
 car = drivingclass()
@@ -92,10 +96,18 @@ print("[INFO] starting video stream...")
 vs = VideoStream(src=0).start()
 time.sleep(2.0)
 
-# 사용 변수 선언
+# 안내방송 플레이어 
 
-box = []
-face_max = 150
+music_file_1 = "MaskAlert.mp3"
+music_file_2 = "dolphin.mp3"
+
+freq_1 = 44100  
+freq_2 = 24000
+bitsize = -16   
+channels = 1    
+buffer = 2048   
+
+
 
 # 시작!
 if(Obj.Connect()):
@@ -103,6 +115,7 @@ if(Obj.Connect()):
     print("Lidar Started Working")
     while True:
 
+        box = []
         # 일반 주행 / 얼굴인식 주행 구분하여 시행
         mask_detected = 0
 
@@ -142,28 +155,32 @@ if(Obj.Connect()):
 
             label = "Mask" if mask > withoutMask else "No Mask"
             color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
+            mylabel = label
             label = "{}: {:.2f}%".format(label, max(mask, withoutMask) * 100)
             cv2.putText(frame, label, (startX, startY - 10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.45, color, 2)
             cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
 
         cv2.imshow("Frame", frame)
-
         if box:
             mask_detected = 1
-            print("mask_detected ==1, driving mode change")
+            # print("mask_detected ==1, driving mode change")
+            print(label)
 
         # box 안에 Face위치 정보 들어있음.
 
-        if mask_detected == 0:
-            car.goForward(0.5)
-            print("normal drive mode")
+        if mask_detected == 0 or mylabel == "Mask":
+            car.goForward(0.4)
             if lidar_stop == 1:
-                car.turnLeft(0.5)  # 앞에 장애물 있을 경우 왼쪽으로 돌기
+                car.goLeft(0.6)  # 앞에 장애물 있을 경우 왼쪽으로 돌기
                 print("there is something in front of me")
-                timez.sleep(1)
+                time.sleep(1)
+            # pygame.mixer.init(freq_2, bitsize, channels, buffer)
+            # pygame.mixer.music.load(music_file_2)
+            # pygame.mixer.music.play()
+            print("normal drive mode")
 
-        elif mask_detected == 1:  # 마스크 인식주행 시작
+        elif mylabel == "No Mask":  # 마스크 인식주행 시작
             center_x = (box[0]+box[2])/2
             box_size = box[2]-box[0]
             if center_x <= horizontal_1:
@@ -174,13 +191,13 @@ if(Obj.Connect()):
                 section = 3
 
             if section == 3 and box_size < 120:
-                car.goRight(0.6)
+                car.goRight(0.4)
                 print("car Go Right")
             elif section == 2 and box_size < 120:
-                car.goForward(0.6)
+                car.goForward(0.4)
                 print("car Go Forward")
             elif section == 1 and box_size < 120:
-                car.goLeft(0.6)
+                car.goLeft(0.4)
                 print("car Go Left")
             elif section == 1 and box_size >= 120:
                 car.stop()
@@ -188,6 +205,11 @@ if(Obj.Connect()):
                 car.stop()
             elif section == 3 and box_size >= 120:
                 car.stop()
+            pygame.mixer.init(freq_1, bitsize, channels, buffer)
+            pygame.mixer.music.load(music_file_1)
+            pygame.mixer.music.play()
+            print("No mask detected")
+            time.sleep(3)
 
         else:
             car.stop()
