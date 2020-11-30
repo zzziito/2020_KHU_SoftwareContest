@@ -173,7 +173,33 @@ angle = 1
 print(data[angle])
 ```
 
-이를 바탕으로 최종 주행 코드를 작성했습니다. 
+![24](https://user-images.githubusercontent.com/52185595/100572976-205c0580-331a-11eb-8e54-506dd880114e.png)
+
+```python
+lidar_front = 0
+lidar_set_front = set()
+for angle in range(0, 20):  # 0~20도까지 거리 평균 내서 distance 에 저장
+lidar_set_front.add(data[angle])
+for angle in range(340, 359):
+lidar_set_front.add(data[angle])
+distance_front = sum(lidar_set_front) // len(lidar_set_front)
+if distance_front < 700:
+     lidar_front = 1 
+```
+
+
+이런 식으로 전,좌,우면에 대한 거리 정보를 받아와 주행을 결정했습니다. 
+
+|변수명|값||||
+|------|---|---|---|---|
+|Lidar Front|1|1|1|1|
+|Lidar Right|1|1|0|0|
+|Lidar Left|1|0|1|0|
+||뒤로|왼쪽으로|왼쪽으로|오른쪽으로|
+
+
+사람 얼굴이 인식되지 않을 때는 이런 식으로 주행하도록 했습니다.
+
 
 ## 자동차 완성 
 
@@ -234,21 +260,31 @@ print(data[angle])
 
 [스텝다운 감압기](http://scipia.com/product/c46-%EA%B3%A0%EC%B6%9C%EB%A0%A5-5a-%EC%8A%A4%ED%85%9D%EB%8B%A4%EC%9A%B4-%EA%B0%90%EC%95%95-%EC%A0%95%EC%A0%84%EC%95%95-dc%EC%BB%A8%EB%B2%84%ED%84%B0-%EB%AA%A8%EB%93%88/244/category/88/display/1/)를 진작 사용할 것을...
 
+## 보완할 점
+
+1. 
+***
+Dual Thread 방식을 사용하면 더 빨리 값을 처리할 수 있을 것입니다. 
+
+지금 방식은 while 문 내에서 스레드 1개로 모든 연산을 순차적으로 하고 있습니다. 그래서 변화하는 주변 상황에 바로바로 대응을 하는 것이 어렵습니다. 하지만 스레드 2개를 사용해 
+한 개는 라이다 값을 받아오고, 한 개는 주행 프로세스를 돌리면 더 매끄러운 주행이 가능할 것입니다. 
+
+파이썬에서 멀티스레드를 사용하려면 daemon 모듈을 사용해야 합니다. daemon 을 사용해서 하나는 딥러닝 이미지 프로세싱을 하고, 하나는 키보드 입력을 받는 코드를 테스트로 짜 보았습니다. 
+
+[코드](https://github.com/zzziito/Self-driving-project/blob/main/main_daemon.py)
+
+두 스레드 사이에서 데이터를 주고 받게 하는 것이 어려워서 최종 코드에 포함시키지는 못했지만, 이런 방식을 사용하면 더 좋은 주행을 할 수 있을 것이라고 생각합니다. 
+
+2.
+***
+이미지 프로세싱이 느립니다. 그래서 얼굴 위치 변화에 한 템포 느리게 반응하는 것을 볼 수 있습니다. 
+
+![25](https://user-images.githubusercontent.com/52185595/100574232-e2141580-331c-11eb-9d25-bd7e2dc2aa49.jpeg)
+
+오픈비노는 고성능 컴퓨터 비전을 할 수 있게 해 줍니다. 이를 활용하면 더욱 빠른 추론이 가능해질 것입니다. 
+
+
+
 ## Preferences
 
 <img src="http://img.shields.io/badge/-Python-black?style=flat&logo=Python&link=https://simpleicons.org/?q=python" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="http://img.shields.io/badge/-OpenCV-Green?style=flat" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="http://img.shields.io/badge/-Keras-Blue?style=flat" style="height : auto; margin-left : 10px; margin-right : 10px;"/> 
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
