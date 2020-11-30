@@ -279,7 +279,7 @@ Dual Thread 방식을 사용하면 더 빨리 값을 처리할 수 있을 것입
 ***
 이미지 프로세싱이 느립니다. 그래서 얼굴 위치 변화에 한 템포 느리게 반응하는 것을 볼 수 있습니다. 
 
-![25](https://user-images.githubusercontent.com/52185595/100574232-e2141580-331c-11eb-9d25-bd7e2dc2aa49.jpeg)
+[openvino](https://user-images.githubusercontent.com/52185595/100574232-e2141580-331c-11eb-9d25-bd7e2dc2aa49.jpeg)
 
 오픈비노는 고성능 컴퓨터 비전을 할 수 있게 해 줍니다. 이를 활용하면 더욱 빠른 추론이 가능해질 것입니다. 
 
