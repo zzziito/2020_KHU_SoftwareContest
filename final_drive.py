@@ -121,17 +121,35 @@ if(Obj.Connect()):
 
         # 라이다 값 받아오기
        
-        lidar_set = set()
+        
         data = next(gen)
-        lidar_stop = 0
+        
+        lidar_front = 0
+        lidar_set_front = set()
         for angle in range(0, 20):  # 0~20도까지 거리 평균 내서 distance 에 저장
-            lidar_set.add(data[angle])
+            lidar_set_front.add(data[angle])
         for angle in range(340, 359):
-            lidar_set.add(data[angle])
-        distance = sum(lidar_set) // len(lidar_set)
-        print(distance)
-        if distance < 500:
-            lidar_stop = 1  # lidar_stop 이 1 이 되면 멈춰야 함
+            lidar_set_front.add(data[angle])
+        distance_front = sum(lidar_set_front) // len(lidar_set_front)
+        if distance_front < 700:
+            lidar_front = 1 
+
+        lidar_left = 0
+        lidar_set_left = set()
+        for angle in range(250, 290):  
+            lidar_set_left.add(data[angle])
+        distance_left = sum(lidar_set_left) // len(lidar_set_left)
+        if distance_left < 700:
+            lidar_left = 1
+
+        lidar_right = 0
+        lidar_set_right = set()
+        for angle in range(70, 110):  # 0~20도까지 거리 평균 내서 distance 에 저장
+            lidar_set_right.add(data[angle])
+        distance_right = sum(lidar_set_right) // len(lidar_set_right)
+        if distance_right < 700:
+            lidar_right = 1  
+        
 
         # 실시간 스트리밍 시작 & 화면 크기 정보 받아오기
         frame = vs.read()
@@ -170,14 +188,24 @@ if(Obj.Connect()):
         # box 안에 Face위치 정보 들어있음.
 
         if mask_detected == 0 or mylabel == "Mask":
-            car.goForward(0.4)
-            if lidar_stop == 1:
-                car.goLeft(0.6)  # 앞에 장애물 있을 경우 왼쪽으로 돌기
+            if lidar_front == 0:
+                car.goForward(0.3)
+            elif lidar_front == 1 and lidar_left == 1 and lidar_right == 1:
+                car.goBackward(0.3)
+                print("Everywhere is blocked!")
+                time.sleep(1)
+            elif lidar_front == 1 and lidar_right == 1:
+                car.goLeft(0.4)
+                print("there is something right side of me")
+                time.sleep(1)
+            elif lidar_front == 1 and lidar_left == 1:
+                car.goRight(0.4)
+                print("there is something left side of me")
+                time.sleep(1)
+            elif lidar_front == 1:
+                car.goLeft(0.4)  
                 print("there is something in front of me")
                 time.sleep(1)
-            # pygame.mixer.init(freq_2, bitsize, channels, buffer)
-            # pygame.mixer.music.load(music_file_2)
-            # pygame.mixer.music.play()
             print("normal drive mode")
 
         elif mylabel == "No Mask":  # 마스크 인식주행 시작
@@ -190,26 +218,22 @@ if(Obj.Connect()):
             else:
                 section = 3
 
-            if section == 3 and box_size < 120:
+            if section == 3 and box_size < 100:
                 car.goRight(0.4)
                 print("car Go Right")
-            elif section == 2 and box_size < 120:
-                car.goForward(0.4)
+            elif section == 2 and box_size < 100:
+                car.goForward(0.3)
                 print("car Go Forward")
-            elif section == 1 and box_size < 120:
+            elif section == 1 and box_size < 100:
                 car.goLeft(0.4)
                 print("car Go Left")
-            elif section == 1 and box_size >= 120:
+            elif box_size >= 120:
+                pygame.mixer.init(freq_1, bitsize, channels, buffer)
+                pygame.mixer.music.load(music_file_1)
+                pygame.mixer.music.play()
+                print("No mask detected")
+                time.sleep(3)
                 car.stop()
-            elif section == 2 and box_size >= 120:
-                car.stop()
-            elif section == 3 and box_size >= 120:
-                car.stop()
-            pygame.mixer.init(freq_1, bitsize, channels, buffer)
-            pygame.mixer.music.load(music_file_1)
-            pygame.mixer.music.play()
-            print("No mask detected")
-            time.sleep(3)
 
         else:
             car.stop()
@@ -218,6 +242,7 @@ if(Obj.Connect()):
         if key == ord("q"):
             car.stop()
             break
+
     cv2.destroyAllWindows()
     vs.stop()
 else:
