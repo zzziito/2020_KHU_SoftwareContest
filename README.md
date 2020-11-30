@@ -215,7 +215,7 @@ if distance_front < 700:
 
 ## 최종 코드 
 
-[최종코드](https://github.com/zzziito/2020_KHU_SoftwareContest/edit/main/final_drive_1.py)
+[최종코드](https://github.com/zzziito/2020_KHU_SoftwareContest/edit/main/final_drive.py)
 
 [주행코드에서 참조하고 있는 클래스](https://github.com/zzziito/2020_KHU_SoftwareContest/blob/main/drive_class.py)
 
