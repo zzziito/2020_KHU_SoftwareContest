@@ -228,7 +228,9 @@ print(data[angle])
 
 [스텝다운 감압기](http://scipia.com/product/c46-%EA%B3%A0%EC%B6%9C%EB%A0%A5-5a-%EC%8A%A4%ED%85%9D%EB%8B%A4%EC%9A%B4-%EA%B0%90%EC%95%95-%EC%A0%95%EC%A0%84%EC%95%95-dc%EC%BB%A8%EB%B2%84%ED%84%B0-%EB%AA%A8%EB%93%88/244/category/88/display/1/)를 진작 사용할 것을...
 
+## Preferences
 
+<img src="http://img.shields.io/badge/-Python-black?style=flat&logo=Python&link=https://simpleicons.org/?q=python" style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 
 
 
