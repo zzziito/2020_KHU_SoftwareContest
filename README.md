@@ -230,7 +230,10 @@ print(data[angle])
 
 ## Preferences
 
-<img src="http://img.shields.io/badge/-Python-black?style=flat&logo=Python&link=https://simpleicons.org/?q=python" style="height : auto; margin-left : 10px; margin-right : 10px;"/>
+<img src="http://img.shields.io/badge/-Python-black?style=flat&logo=Python&link=https://simpleicons.org/?q=python" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="http://img.shields.io/badge/-OpenCV-Green?style=flat" style="height : auto; margin-left : 10px; margin-right : 10px;"/> <img src="http://img.shields.io/badge/-Keras-Blue?style=flat" style="height : auto; margin-left : 10px; margin-right : 10px;"/> 
+
+
+
 
 
 
